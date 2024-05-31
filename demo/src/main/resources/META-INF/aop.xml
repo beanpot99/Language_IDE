@@ -1,0 +1,10 @@
+<aspectj>
+    <weaver options="-verbose -Xreweavable -Xset:weaveJavaxPackages=true">
+        <!-- only weave classes in our application -->
+        <include within="com.example..*"/>
+    </weaver>
+    <aspects>
+        <!-- weave in Spring aspects -->
+        <aspect name="com.example.demo.logging.advice.FeatureFlagAspect"/>
+    </aspects>
+</aspectj>

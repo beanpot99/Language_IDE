@@ -1,6 +1,5 @@
 package com.example.demo.manager;
 
-import com.example.demo.listener.CacheInitializer;
 import com.example.demo.model.Script;
 import org.apache.logging.log4j.util.Strings;
 import org.slf4j.Logger;
@@ -54,6 +53,10 @@ public class ScriptManager {
 
     public ScriptEngine getScriptEngine(String language){
         ScriptEngine scriptEngine = null;
+        LOGGER.info(String.valueOf(this.engineManager.getEngineFactories().size()) + ": SIZE");
+        for( ScriptEngineFactory factory : this.engineManager.getEngineFactories()){
+            LOGGER.info("Engines available: " + factory.getEngineName());
+        }
         if(Strings.isNotBlank(language)){
             if(engines.get(language) != null){
                 scriptEngine = engines.get(language);
